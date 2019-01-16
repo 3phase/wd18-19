@@ -25,7 +25,7 @@
           <span class="card">Web-Design</span>
         </div>
       </header>
-      <article id="subj-1">
+      <article id="bel">
         <table>
           <thead>
             <tr>
@@ -59,74 +59,79 @@
     <section id="add-student">
       <article>
         <h3>Добавяне на ученик</h3>
-        <form>
-          <table>
-            <tr>
-              <td><label for="class">Клас:</label></td>
-              <td>
-                <select id="class" name="class">
-                  <option value="a">А</option>
-                  <option value="b">Б</option>
-                  <option value="v">В</option>
-                  <option value="g">Г</option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-                <td><label for="subject">Предмет:</label></td>
-                <td>
-                  <select id="subject" name="subject">
-                    <option value="empty">Изберете предмет</option>
-                    <option value="bel">БЕЛ</option>
-                    <option value="maths">Математика</option>
-                    <option value="wd">Web-дизайн</option>
-                  </select>
-                </td>
-              </tr>
-            <tr>
-              <td><label for="number">Номер: </label></td>
-              <td>
-                <input id="number" name="number">
-              </td>
-            </tr>
-            <tr>
-              <td><label for="name">Име:</label></td>
-              <td>
-                <input id="name" name="name">
-              </td>
-            </tr>
-            <tr>
-              <td><label for="grade-one">Тест 1:</label></td>
-              <td>
-                <select id="grade-one" name="grade-one">
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td><label for="grade-two">Тест 2:</label></td>
-              <td>
-                <select id="grade-two" name="grade-two">
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td></td>
-              <td><input type="submit" class="add-btn" value="Добавяне"></td>
-            </tr>
-          </table>
+        <form id="student-data">
+          <div class="tr">
+            <div class="td"><label for="class">Клас:</label></div>
+            <div class="td">
+              <select id="class" name="class">
+                <option value="a">А</option>
+                <option value="b">Б</option>
+                <option value="v">В</option>
+                <option value="g">Г</option>
+              </select>
+            </div>
+          </div>
+          <div class="tr">
+            <div class="td"><label for="subject">Предмет:</label></div>
+            <div class="td">
+              <select id="subject" name="subject">
+                <option value="empty">Изберете предмет</option>
+                <option value="bel">БЕЛ</option>
+                <option value="maths">Математика</option>
+                <option value="wd">Web-дизайн</option>
+              </select>
+            </div>
+          </div>
+          <div class="tr">
+            <div class="td"><label for="number">Номер: </label></div>
+            <div class="td">
+              <input id="number" name="number">
+            </div>
+          </div>
+          <div class="tr">
+            <div class="td"><label for="name">Име:</label></div>
+            <div class="td">
+              <input id="name" name="name">
+            </div>
+          </div>
+          <div class="tr">
+            <div class="td"><label for="grade-one">Тест 1:</label></div>
+            <div class="td">
+              <select id="grade-one" name="grade-one">
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+              </select>
+            </div>
+          </div>
+          <div class="tr">
+            <div class="td"><label for="grade-two">Тест 2:</label></div>
+            <div class="td">
+              <select id="grade-two" name="grade-two">
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+              </select>
+            </div>
+          </div>
+          <div class="tr">
+            <div class="td"></div>
+            <div class="td"><input type="submit" class="add-btn" value="Добавяне"></div>
+          </div>
         </form>
       </article>
     </section>
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"></script>
+
+    <script src="./js/script.js" type="text/javascript"></script>
 
   </body>
 </html>
