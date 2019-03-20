@@ -1,16 +1,16 @@
 $(document).ready(function() {
 
-    function writeToTable(objToWrite) {
-        $("article#" + objToWrite.subjId + " table tbody").append(
-            "<tr>" + 
-            "<td>" + objToWrite.classId + "</td>" + 
-            "<td>" + objToWrite.num + "</td>" + 
-            "<td>" + objToWrite.name + "</td>" + 
-            "<td>" + objToWrite.gradeOne + "</td>" +     
-            "<td>" + objToWrite.gradeTwo + "</td>" + 
-            "</tr>",
+    function writeToTable(dataToWrite) {
+        $("article#" + dataToWrite.subjId + " table tbody").append(
+            '<tr>' +
+            '<td>' + dataToWrite.classId + '</td>\n' +
+            '<td>' + dataToWrite.num + '</td>\n' +
+            '<td>' + dataToWrite.name + '</td>\n' +
+            '<td>' + dataToWrite.gradeOne + '</td>\n' +
+            '<td>' + dataToWrite.gradeTwo + '</td>\n' +
+            '</tr>'
         );
-    }   
+    } 
     $("#student-data").submit(function(e) {
         e.preventDefault();
 
