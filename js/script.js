@@ -1,17 +1,16 @@
 $(document).ready(function() {
 
-    function writeDataToTable(objToWrite) {
+    function writeToTable(objToWrite) {
         $("article#" + objToWrite.subjId + " table tbody").append(
-            "<tr>" +
-            "<td>" + objToWrite.classId + "</td>" +
-            "<td>" + objToWrite.num + "</td>" +
-            "<td>" + objToWrite.name + "</td>" +
-            "<td>" + objToWrite.gradeOne + "</td>" +
-            "<td>" + objToWrite.gradeTwo + "</td>" +
+            "<tr>" + 
+            "<td>" + objToWrite.classId + "</td>" + 
+            "<td>" + objToWrite.num + "</td>" + 
+            "<td>" + objToWrite.name + "</td>" + 
+            "<td>" + objToWrite.gradeOne + "</td>" +     
+            "<td>" + objToWrite.gradeTwo + "</td>" + 
             "</tr>",
         );
-    }
-
+    }   
     $("#student-data").submit(function(e) {
         e.preventDefault();
 
@@ -24,8 +23,8 @@ $(document).ready(function() {
             'gradeTwo': $("select[name='grade-two']").val()
         };
 
-        writeDataToTable(dataObj);
+        writeToTable(dataObj);
 
     });
-
+    
 });
