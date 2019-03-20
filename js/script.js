@@ -11,7 +11,6 @@ $(document).ready(function() {
             '</tr>'
         );
     } 
-
     $("#student-data").submit(function(e) {
         e.preventDefault();
 
@@ -23,9 +22,9 @@ $(document).ready(function() {
             'gradeOne': $("select[name='grade-one']").val(),
             'gradeTwo': $("select[name='grade-two']").val()
         };
-        
+
         writeToTable(dataObj);
 
     });
-
+    
 });
