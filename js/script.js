@@ -1,5 +1,22 @@
 $(document).ready(function() {
 
+    function dataValid(data) {
+        $("#student-data").validate({
+            rules: {
+                number: {
+                    required: true,
+                    number: true,
+                },
+                name: 'required'
+            },
+            messages: {
+                number: 'Полето не трябва да е празно, както и стойността трябва да е цяло число.',
+                name: 'Полето не трябва да е празно.',
+            }
+        });
+        return $("#student-data").valid();
+    }
+
     function writeDataToTable(objToWrite) {
         $("article#" + objToWrite.subjId + " table tbody").append(
             "<tr>" +
@@ -24,9 +41,11 @@ $(document).ready(function() {
             'gradeTwo': $("select[name='grade-two']").val()
         };
 
-        writeDataToTable(dataObj);
-
-        // branch for a
+        if (dataValid(dataObj)) {
+            writeDataToTable(dataObj);
+        } else {
+            alert('Въведените данни са грешни.');
+        }
 
     });
 
