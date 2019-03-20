@@ -1,5 +1,15 @@
 $(document).ready(function() {
 
+    var studentInfo = {
+        'bel': [],
+        'math': [],
+        'wd': []
+    };
+
+    function addDataToDataStructure(data) {
+        studentInfo[data.subjId].push(data);
+    }
+
     function dataValid(data) {
         $("#student-data").validate({
             rules: {
@@ -42,6 +52,7 @@ $(document).ready(function() {
         };
 
         if (dataValid(dataObj)) {
+            addDataToDataStructure(dataObj);
             writeDataToTable(dataObj);
         } else {
             alert('Въведените данни са грешни.');
