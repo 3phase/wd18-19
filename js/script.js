@@ -1,5 +1,40 @@
 $(document).ready(function() {
 
+    var studentInfo = {
+        'bel': [],
+        'math': [],
+        'wd': []
+    };
+
+    $.validator.addMethod("lettersonly", function(value, element) {
+        return this.optional(element) || /^[a-z]+$/i.test(value);
+    }, "Letters only please");
+
+    function saveData(data) {
+        studentInfo[data.subjId].push(data);
+    }
+
+    function isDataValid(data) {
+        $("#student-data").validate({
+            rules: {
+                number: {
+                    required: true,
+                    number: true,
+                }, 
+                name: {
+                    required: true,
+                    lettersonly: true
+                }
+            },
+            messages: {
+                 number: "Номерът е задължителен.",
+                 name: "Името е задължително"
+            }
+        });
+
+        return $("#student-data").valid();
+    }
+
     function writeToTable(dataToWrite) {
         $("article#" + dataToWrite.subjId + " table tbody").append(
             "<tr>" +
@@ -24,7 +59,10 @@ $(document).ready(function() {
             'gradeTwo': $("select[name='grade-two']").val()
         };
 
-        writeToTable(dataObj);
+        if (isDataValid(dataObj)) {
+            saveData(dataObj);
+            writeToTable(dataObj);
+        }
 
 
     });
