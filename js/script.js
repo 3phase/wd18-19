@@ -1,8 +1,18 @@
 $(document).ready(function() {
-
+    
     $.validator.addMethod("lettersonly", function(value, element) {
         return this.optional(element) || /^[a-z]+$/i.test(value);
     }, "Letters only please"); 
+    
+    var studentInfo = {
+        'bel': [],
+        'math': [],
+        'wd': []
+    };
+
+    function addDataToStudentInfo(dataObj) {
+        studentInfo[dataObj.subjId].push(dataObj);
+    }
 
     function isDataValid(data) {
         $("#student-data").validate({
@@ -49,6 +59,7 @@ $(document).ready(function() {
         };
         
         if (isDataValid(dataObj)) {
+            addDataToStudentInfo(dataObj);
             writeToTable(dataObj);
         }
 
