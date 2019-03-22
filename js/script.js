@@ -1,5 +1,9 @@
 $(document).ready(function() {
 
+    function isDataValid(data) {
+        
+    }
+
     function writeToTable(dataToWrite) {
         $("article#" + dataToWrite.subjId + " table tbody").append(
             '<tr>' +
@@ -23,7 +27,11 @@ $(document).ready(function() {
             'gradeTwo': $("select[name='grade-two']").val()
         };
 
-        writeToTable(dataObj);
+        if (isDataValid(dataObj)) {
+            writeToTable(dataObj);
+        } else {
+            alert("Въведената информация е грешна.");
+        }
 
     });
     
