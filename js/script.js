@@ -1,4 +1,38 @@
 $(document).ready(function() {
+    
+    $.validator.addMethod("lettersonly", function(value, element) {
+        return this.optional(element) || /^[a-z]+$/i.test(value);
+    }, "Letters only please"); 
+    
+    var studentInfo = {
+        'bel': [],
+        'math': [],
+        'wd': []
+    };
+
+    function addDataToStudentInfo(dataObj) {
+        studentInfo[dataObj.subjId].push(dataObj);
+    }
+
+    function isDataValid(data) {
+        $("#student-data").validate({
+            rules: {
+                number: {
+                    required: true,
+                    number: true
+                },
+                name: {
+                    required: true,
+                    lettersonly: true
+                }
+            },
+            messages: {
+                number: 'Моля, въведете стойност за номер, която да е целочислена.',
+                name: 'Моля, въведете стойност за името, състояща се само от букви',
+            }
+        });
+        return $("#student-data").valid();
+    }
 
     var studentInfo = {
         'bel': [],
