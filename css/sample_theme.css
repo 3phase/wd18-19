@@ -48,8 +48,15 @@ section header span.card {
     cursor: pointer
 }
 
+
 section header span.card:hover {
-    background-color: #b3c3c3
+    /* background-color: #b3c3c3 */
+    background-color: #000;
+    color: #fff;
+}
+
+section header span.card.active:hover {
+    color: #000;
 }
 
 section header span.card.active { background-color: #bbcece; border-bottom-color: #bbcece }
