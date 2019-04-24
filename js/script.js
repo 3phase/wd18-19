@@ -10,6 +10,16 @@ $(document).ready(function() {
         'wd': []
     };
 
+    function showRelevantTable(targetObj) {
+        $.each($('section#diary article'), function(k, obj) {
+            $(obj).css('display', 'none');
+        });
+
+        $('section#diary article#' + $(targetObj).attr('data-subj-id')).css({
+            'display': 'block'
+        });
+    }
+
     function addDataToDataStructure(data) {
         studentInfo[data.subjId].push(data);
     }
@@ -61,6 +71,10 @@ $(document).ready(function() {
         } else {
             alert('Въведените данни са грешни.');
         }
+    });
+
+    $('section#diary span.card').on('click', function() {
+        showRelevantTable($(this));
     });
 
 });
