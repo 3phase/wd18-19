@@ -1,17 +1,17 @@
 $(document).ready(function() {
-
+    
+    $.validator.addMethod("lettersonly", function(value, element) {
+        return this.optional(element) || /^[a-z]+$/i.test(value);
+    }, "Letters only please"); 
+    
     var studentInfo = {
         'bel': [],
         'math': [],
         'wd': []
     };
-
-    $.validator.addMethod("lettersonly", function(value, element) {
-        return this.optional(element) || /^[a-z]+$/i.test(value);
-    }, "Letters only please");
-
-    function saveData(data) {
-        studentInfo[data.subjId].push(data);
+	
+    function addDataToStudentInfo(dataObj) {
+        studentInfo[dataObj.subjId].push(dataObj);
     }
 
     function isDataValid(data) {
@@ -19,34 +19,59 @@ $(document).ready(function() {
             rules: {
                 number: {
                     required: true,
-                    number: true,
-                }, 
+                    number: true
+                },
                 name: {
                     required: true,
                     lettersonly: true
                 }
             },
             messages: {
-                 number: "Номерът е задължителен.",
-                 name: "Името е задължително"
+                number: 'Моля, въведете стойност за номер, която да е целочислена.',
+                name: 'Моля, въведете стойност за името, състояща се само от букви',
             }
         });
-
         return $("#student-data").valid();
     }
 
-    function writeToTable(dataToWrite) {
-        $("article#" + dataToWrite.subjId + " table tbody").append(
-            "<tr>" +
-            "<td>" + dataToWrite.classId + "</td>" +
-            "<td>" + dataToWrite.num + "</td>" +
-            "<td>" + dataToWrite.name + "</td>" +
-            "<td>" + dataToWrite.gradeOne + "</td>" +
-            "<td>" + dataToWrite.gradeTwo + "</td>" +
-            "</tr>"
-        );
+    var studentInfo = {
+        'bel': [],
+        'math': [],
+        'wd': []
+    };
+
+    function addDataToDataStructure(data) {
+        studentInfo[data.subjId].push(data);
     }
 
+    function dataValid(data) {
+        $("#student-data").validate({
+            rules: {
+                number: {
+                    required: true,
+                    number: true,
+                },
+                name: 'required'
+            },
+            messages: {
+                number: 'Полето не трябва да е празно, както и стойността трябва да е цяло число.',
+                name: 'Полето не трябва да е празно.',
+            }
+        });
+        return $("#student-data").valid();
+    }
+
+    function writeDataToTable(objToWrite) {
+        $("article#" + objToWrite.subjId + " table tbody").append(
+            "<tr>" +
+            "<td>" + objToWrite.classId + "</td>" +
+            "<td>" + objToWrite.num + "</td>" +
+            "<td>" + objToWrite.name + "</td>" +
+            "<td>" + objToWrite.gradeOne + "</td>" +
+            "<td>" + objToWrite.gradeTwo + "</td>" +
+            "</tr>",
+        );
+    } 
     $("#student-data").submit(function(e) {
         e.preventDefault();
 
@@ -59,12 +84,12 @@ $(document).ready(function() {
             'gradeTwo': $("select[name='grade-two']").val()
         };
 
-        if (isDataValid(dataObj)) {
-            saveData(dataObj);
-            writeToTable(dataObj);
+        if (dataValid(dataObj)) {
+            addDataToDataStructure(dataObj);
+            writeDataToTable(dataObj);
+        } else {
+            alert('Въведените данни са грешни.');
         }
-
-
     });
-
+    
 });
