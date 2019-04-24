@@ -1,14 +1,41 @@
 $(document).ready(function() {
 
-    function writeToTable(dataToWrite) {
-        $("article#" + dataToWrite.subjId + " table tbody").append(
-            '<tr>' +
-            '<td>' + dataToWrite.classId + '</td>\n' +
-            '<td>' + dataToWrite.num + '</td>\n' +
-            '<td>' + dataToWrite.name + '</td>\n' +
-            '<td>' + dataToWrite.gradeOne + '</td>\n' +
-            '<td>' + dataToWrite.gradeTwo + '</td>\n' +
-            '</tr>'
+    var studentInfo = {
+        'bel': [],
+        'math': [],
+        'wd': []
+    };
+
+    function addDataToDataStructure(data) {
+        studentInfo[data.subjId].push(data);
+    }
+
+    function dataValid(data) {
+        $("#student-data").validate({
+            rules: {
+                number: {
+                    required: true,
+                    number: true,
+                },
+                name: 'required'
+            },
+            messages: {
+                number: 'Полето не трябва да е празно, както и стойността трябва да е цяло число.',
+                name: 'Полето не трябва да е празно.',
+            }
+        });
+        return $("#student-data").valid();
+    }
+
+    function writeDataToTable(objToWrite) {
+        $("article#" + objToWrite.subjId + " table tbody").append(
+            "<tr>" +
+            "<td>" + objToWrite.classId + "</td>" +
+            "<td>" + objToWrite.num + "</td>" +
+            "<td>" + objToWrite.name + "</td>" +
+            "<td>" + objToWrite.gradeOne + "</td>" +
+            "<td>" + objToWrite.gradeTwo + "</td>" +
+            "</tr>",
         );
     } 
     $("#student-data").submit(function(e) {
@@ -23,7 +50,12 @@ $(document).ready(function() {
             'gradeTwo': $("select[name='grade-two']").val()
         };
 
-        writeToTable(dataObj);
+        if (dataValid(dataObj)) {
+            addDataToDataStructure(dataObj);
+            writeDataToTable(dataObj);
+        } else {
+            alert('Въведените данни са грешни.');
+        }
 
     });
     
