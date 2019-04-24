@@ -9,7 +9,7 @@ $(document).ready(function() {
         'math': [],
         'wd': []
     };
-
+	
     function addDataToStudentInfo(dataObj) {
         studentInfo[dataObj.subjId].push(dataObj);
     }
@@ -90,7 +90,6 @@ $(document).ready(function() {
         } else {
             alert('Въведените данни са грешни.');
         }
-
     });
     
 });
