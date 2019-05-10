@@ -10,6 +10,13 @@ $(document).ready(function() {
         return this.optional(element) || /^[a-z]+$/i.test(value);
     }, "Letters only please");
 
+    function openArticle(targetArticle) {
+        $("section#diary article").css("display", "none");
+        $("section#diary article#" + targetArticle).css("display", "block");
+        $("section#diary header span.active").removeClass("active");
+        $("section#diary header span[data-attr-subj='" + targetArticle + "']").addClass("active");
+    }
+
     function saveData(data) {
         studentInfo[data.subjId].push(data);
     }
@@ -65,6 +72,10 @@ $(document).ready(function() {
         }
 
 
+    });
+
+    $("header span.card").on("click", function() {
+        openArticle($(this).attr("data-attr-subj"));
     });
 
 });
