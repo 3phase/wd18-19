@@ -10,6 +10,13 @@ $(document).ready(function() {
         'wd': []
     };
 
+    function showArticle(target) {
+        $("section#diary article").css("display", "none");
+        $("section#diary article#" + target).css("display", "block");
+        $("section#diary header span.active").removeClass("active");
+        $("section#diary header span[data-attr-subject='" + target + "']").addClass("active");
+    }
+    
     function addDataToStudentInfo(dataObj) {
         studentInfo[dataObj.subjId].push(dataObj);
     }
@@ -63,6 +70,10 @@ $(document).ready(function() {
             writeToTable(dataObj);
         }
 
+    });
+
+    $("section#diary header span.card").on("click", function() {
+        showArticle($(this).attr("data-attr-subject"));
     });
 
 });

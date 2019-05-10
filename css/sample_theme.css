@@ -125,3 +125,6 @@ section#add-student article .add-btn {
 
 form#student-data div.tr { display: table-row }
 form#student-data div.td { display: table-cell }
+
+section#diary article { display: none; }
+section#diary article#bel { display: block; }
